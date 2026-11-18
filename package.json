@@ -1,0 +1,22 @@
+{
+  "name": "frenchflair-moda",
+  "version": "1.0.0",
+  "description": "French Flair — Moda : générateur d'assets (Claude + Blender MCP) et éditeur de maps",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "blender": "docker compose up -d blender",
+    "blender:build": "docker compose build blender",
+    "blender:logs": "docker compose logs -f blender"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "express": "^4.21.2",
+    "nodemailer": "^6.9.16"
+  }
+}

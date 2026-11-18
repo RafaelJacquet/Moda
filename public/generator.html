@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Générateur d'assets — French Flair Moda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css" />
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.169.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.169.0/examples/jsm/"}}</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><strong>French Flair</strong><span>Moda</span></a>
+  <nav>
+    <a href="/">Accueil</a>
+    <a href="/generator">Générateur</a>
+    <a href="/editor">Éditeur de maps</a>
+  </nav>
+  <div class="user"><span id="user-email"></span><button class="btn small ghost" id="logout-btn" style="border-color: var(--cream); color: var(--cream)">Déconnexion</button></div>
+</header>
+
+<div class="tool-layout">
+  <aside class="side">
+    <div id="mode-banner" class="banner warn hidden"></div>
+    <div id="blender-banner" class="banner error hidden">Blender hors ligne — lancez <strong>docker compose up -d blender</strong></div>
+
+    <section>
+      <div class="label">Nouvelle demande</div>
+      <form id="gen-form" class="field">
+        <textarea id="prompt" maxlength="2000" placeholder="Ex. : un banc public en bois style low-poly, environ 1,8 m de long, avec pieds en métal vert foncé"></textarea>
+        <div class="model-picker" id="model-picker"></div>
+        <button class="btn" type="submit" id="gen-btn">Générer l'asset</button>
+      </form>
+    </section>
+
+    <section>
+      <div class="label">Affiche murale</div>
+      <div class="empty-msg">Transformez une image (JPG, PNG, WebP, GIF, BMP, SVG, AVIF…) en affiche encadrée à coller sur les murs. Portrait ou paysage, détecté automatiquement.</div>
+      <input type="file" id="poster-file" accept="image/*,.svg" class="hidden" />
+      <button class="btn small ghost" id="poster-pick-btn">🖼 Choisir une image…</button>
+      <form id="poster-form" class="field hidden">
+        <img id="poster-preview" alt="" style="max-width:100%;border-radius:12px" />
+        <label class="label" for="poster-name">Nom de l'affiche</label>
+        <input id="poster-name" maxlength="60" placeholder="affiche-concert" />
+        <label class="label" for="poster-height">Hauteur (cm)</label>
+        <input id="poster-height" type="number" min="10" max="500" step="5" value="80" />
+        <button class="btn" type="submit" id="poster-btn">Créer l'affiche → bibliothèque</button>
+      </form>
+    </section>
+
+    <section id="pipeline-section" class="hidden">
+      <div class="label">Pipeline</div>
+      <div class="steps" id="steps"></div>
+      <div class="problems" id="problems"></div>
+      <div id="job-error" class="banner error hidden"></div>
+    </section>
+
+    <section>
+      <div class="label">Mes générations</div>
+      <div id="job-list" class="steps"></div>
+      <button class="btn small ghost" id="clear-history-btn">🗑 Effacer l'historique</button>
+    </section>
+  </aside>
+
+  <main class="viewer-wrap" id="viewer">
+    <div id="status"></div>
+    <div class="review-bar hidden" id="review-bar">
+      <input id="asset-name" maxlength="60" placeholder="Nom de l'asset" />
+      <select id="asset-placement" title="Type de placement décidé par l'IA, modifiable">
+        <option value="sol">🟫 Sol</option>
+        <option value="mur">🧱 Mur</option>
+      </select>
+      <button class="btn small accent" id="approve-btn">✓ Valider → bibliothèque</button>
+      <button class="btn small danger" id="reject-btn">✗ Rejeter</button>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay hidden" id="modal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 id="modal-title"></h3>
+      <button class="btn small ghost" id="modal-close">✕ Fermer</button>
+    </div>
+    <pre id="modal-body"></pre>
+  </div>
+</div>
+
+<script type="module" src="/generator.js"></script>
+</body>
+</html>

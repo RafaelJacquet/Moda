@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Éditeur de maps — French Flair Moda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css" />
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.169.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.169.0/examples/jsm/"}}</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><strong>French Flair</strong><span>Moda</span></a>
+  <nav>
+    <a href="/">Accueil</a>
+    <a href="/generator">Générateur</a>
+    <a href="/editor">Éditeur de maps</a>
+  </nav>
+  <div class="user"><span id="user-email"></span><button class="btn small ghost" id="logout-btn" style="border-color: var(--cream); color: var(--cream)">Déconnexion</button></div>
+</header>
+
+<div class="tool-layout">
+  <aside class="side">
+    <section>
+      <div class="label">Maps (SketchUp → GLB)</div>
+      <div id="scene-list" class="steps"></div>
+      <input type="file" id="map-file" accept=".glb" class="hidden" />
+      <button class="btn small ghost" id="upload-map-btn">+ Importer une map (.glb)</button>
+    </section>
+
+    <section>
+      <div class="label">Bibliothèque d'assets</div>
+      <div class="empty-msg">Glissez-déposez : 🟫 sol se pose sur la surface visée (sol, table, étagère, autre objet) si elle est assez grande, 🧱 mur se colle aux murs et aux faces des objets. Un objet posé sur un autre le suit. Alt : forcer au sol. Cliquez sur le badge pour changer le type. R : rotation · +/− : échelle · Suppr : retirer.</div>
+      <div id="asset-list" class="asset-grid"></div>
+      <input type="file" id="asset-file" accept=".glb,.gltf,.obj,.stl" class="hidden" />
+      <button class="btn small ghost" id="import-asset-btn">+ Importer un asset 3D</button>
+      <form id="import-form" class="field hidden">
+        <label class="label" for="import-name">Nom de l'asset</label>
+        <input id="import-name" maxlength="60" />
+        <label class="label" for="import-placement">Type de placement</label>
+        <select id="import-placement">
+          <option value="sol">🟫 Sol</option>
+          <option value="mur">🧱 Mur</option>
+        </select>
+        <button class="btn small" type="submit">Ajouter à la bibliothèque</button>
+      </form>
+    </section>
+
+    <section>
+      <div class="label">Grille &amp; magnétisme</div>
+      <select id="grid-size" class="scene-item">
+        <option value="0.25" selected>Précision 0,25 m</option>
+        <option value="0.5">Précision 0,5 m</option>
+        <option value="1">Précision 1 m</option>
+        <option value="0">Placement libre</option>
+      </select>
+    </section>
+
+    <section>
+      <div class="label">Scène</div>
+      <button class="btn" id="save-btn">💾 Sauvegarder la map</button>
+      <button class="btn accent" id="export-btn">⬇ Exporter en .glb (Unity / Unreal)</button>
+    </section>
+  </aside>
+
+  <main class="viewer-wrap" id="viewer">
+    <div id="status"></div>
+    <div id="toolbar">
+      <button class="btn small ghost" id="rotate-btn">↻ Rotation (R)</button>
+      <button class="btn small ghost" id="scale-down-btn">− Réduire</button>
+      <button class="btn small ghost" id="scale-up-btn">+ Agrandir</button>
+      <button class="btn small danger" id="delete-btn">Supprimer</button>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/editor.js"></script>
+</body>
+</html>

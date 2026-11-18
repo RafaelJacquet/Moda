@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>French Flair — Moda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><strong>French Flair</strong><span>Moda</span></a>
+  <nav>
+    <a href="/">Accueil</a>
+    <a href="/generator">Générateur</a>
+    <a href="/editor">Éditeur de maps</a>
+  </nav>
+  <div class="user"><span id="user-email"></span><button class="btn small ghost" id="logout-btn" style="border-color: var(--cream); color: var(--cream)">Déconnexion</button></div>
+</header>
+
+<main class="hub">
+  <div class="label">Pipeline 3D &amp; VR</div>
+  <h1 class="display">De l'idée au moteur de jeu.</h1>
+  <p class="lead">Décrivez un objet, l'IA le modélise dans Blender, le vérifie et le corrige. Validez-le, placez-le sur vos maps SketchUp, puis exportez la scène en GLB pour Unity ou Unreal.</p>
+
+  <div class="tools">
+    <a class="tool-card lilac" href="/generator">
+      <span class="pill">Outil 1</span>
+      <h2>Générateur d'assets 3D</h2>
+      <p>Une simple demande → spécification détaillée par Claude → modélisation Blender → contrôle qualité IA → votre validation → bibliothèque d'assets .glb.</p>
+      <span class="go">→</span>
+    </a>
+    <a class="tool-card mustard" href="/editor">
+      <span class="pill">Outil 2</span>
+      <h2>Éditeur de maps</h2>
+      <p>Chargez votre map (SketchUp → GLB), glissez-déposez les assets de la bibliothèque, sauvegardez et exportez la scène complète en un seul .glb.</p>
+      <span class="go">→</span>
+    </a>
+  </div>
+
+  <div class="hub-status" id="hub-status"></div>
+</main>
+
+<script type="module" src="/hub.js"></script>
+</body>
+</html>

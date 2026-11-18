@@ -1,0 +1,1609 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>French Flair — Charte graphique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+@font-face {
+  font-family: Magica;
+  src: url("./assets/Magica.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --cream: #F2E8D8;
+  --lilac: #BEACDF;
+  --purple: #4B0090;
+  --mustard: #EDC470;
+  --chartreuse: #EBEF73;
+  --ink: #1A0033;
+  --mark: #4B0090;
+  --hero-cyan: #35B5C2;
+  --hero-coral: #D56456;
+  --radius: 32px;
+  --radius-sm: 16px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: Magica, Georgia, serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; background: var(--cream); }
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.deck { background: var(--cream); }
+.stage {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px 96px;
+}
+
+.clip-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  padding: 56px 0 48px;
+  border-bottom: 1px solid color-mix(in srgb, var(--purple) 14%, transparent);
+  background: var(--cream);
+  scroll-margin-top: 16px;
+  overflow: visible;
+}
+.slide:last-of-type { border-bottom: 0; }
+.slide.dark,
+.slide.lilac,
+.slide.mustard {
+  margin: 0 -32px;
+  padding: 56px 32px 48px;
+  border-bottom: 0;
+  border-radius: 32px;
+}
+.slide.dark { background: var(--purple); color: var(--cream); }
+.slide.lilac { background: var(--lilac); }
+.slide.mustard { background: var(--mustard); }
+
+.chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+.dark .brand-row { color: var(--chartreuse); }
+.mustard .brand-row { color: var(--ink); }
+.counter {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--purple);
+}
+.dark .counter { color: var(--cream); }
+
+h1, h2, h3, p { margin: 0; }
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(36px, 5.2vw, 72px);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--purple);
+  padding-bottom: 0.12em;
+}
+.dark .display { color: var(--cream); }
+.mustard .display { color: var(--purple); }
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.22;
+  letter-spacing: 0.02em;
+  color: var(--purple);
+  padding-bottom: 0.1em;
+}
+.dark .h2 { color: var(--cream); }
+.lead {
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 500;
+  line-height: 1.55;
+  max-width: 62ch;
+  color: color-mix(in srgb, var(--purple) 78%, transparent);
+}
+.dark .lead { color: color-mix(in srgb, var(--cream) 82%, transparent); }
+.h2 + .lead { margin-top: 22px; margin-bottom: 20px; }
+.grow > .h2 + :not(.lead) { margin-top: 22px; }
+.lead + .body { margin-top: 16px; }
+.body + .body { margin-top: 16px; }
+.label + .h2,
+.label + .scale-demo { margin-top: 16px; }
+.body {
+  font-size: clamp(13px, 1vw, 16px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.dark .body { color: var(--cream); }
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+.dark .label { color: var(--chartreuse); }
+.em { font-style: italic; color: color-mix(in srgb, var(--purple) 55%, var(--cream)); }
+.dark .em { color: color-mix(in srgb, var(--cream) 70%, transparent); }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--chartreuse);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tag.warn { background: var(--mustard); }
+.tag.ghost {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--purple);
+  color: var(--purple);
+}
+.dark .tag.ghost {
+  box-shadow: inset 0 0 0 1.5px var(--cream);
+  color: var(--cream);
+}
+
+.grow { display: flex; flex-direction: column; justify-content: flex-start; padding-top: 32px; }
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--purple) 55%, transparent);
+  flex-shrink: 0;
+  margin-top: 40px;
+}
+.dark .foot { color: color-mix(in srgb, var(--cream) 55%, transparent); }
+
+.grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4%; align-items: start; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px; }
+
+.swatch {
+  border-radius: var(--radius);
+  min-height: 210px;
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.swatch .name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.02em; }
+.swatch .hex { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; }
+.swatch .role { font-size: 12px; font-weight: 500; line-height: 1.4; opacity: 0.85; }
+
+.card {
+  background: var(--cream);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.dark .card { background: color-mix(in srgb, var(--cream) 12%, transparent); }
+.note {
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  background: var(--lilac);
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.mark {
+  width: 92px;
+  height: auto;
+  fill: var(--mark);
+}
+.mark.lg { width: 150px; }
+.mark.cream { fill: var(--cream); }
+.mark.mustard { fill: var(--mustard); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 15px 30px;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  border: 0;
+  cursor: default;
+}
+.btn-primary { background: var(--mustard); color: var(--ink); }
+.btn-primary:hover, .btn-primary.hov { background: var(--chartreuse); }
+.btn-primary.press { background: color-mix(in oklab, var(--chartreuse) 88%, var(--ink)); }
+.btn-sec {
+  background: var(--cream);
+  color: var(--purple);
+  box-shadow: inset 0 0 0 2px var(--purple);
+}
+.btn-sec.hov { background: var(--lilac); }
+.btn-onm { background: var(--purple); color: var(--cream); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+.pair {
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.pair span { display: grid; place-items: center; font-size: 12px; font-weight: 700; padding: 10px; text-align: center; }
+
+.do, .dont {
+  border-radius: var(--radius);
+  padding: 18px;
+  min-height: 140px;
+}
+.do { background: var(--chartreuse); }
+.dont { background: var(--lilac); }
+.do .k, .dont .k { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 8px; }
+.dont .k { color: var(--purple); }
+
+.toc { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 22px; }
+.toc button {
+  appearance: none;
+  background: none;
+  border: 0;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 5px 0;
+  color: var(--purple);
+}
+.toc button:hover .t { text-decoration: underline; text-underline-offset: 3px; }
+.toc .n {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: color-mix(in srgb, var(--purple) 50%, transparent);
+  width: 28px;
+}
+.toc .t { font-size: 14px; font-weight: 600; }
+
+.type-row {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 20px;
+  align-items: start;
+  padding: 22px 0 26px;
+  border-top: 1px solid color-mix(in srgb, var(--purple) 16%, transparent);
+}
+.type-row:first-of-type { border-top: 0; }
+.mono {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--purple);
+  background: var(--lilac);
+  padding: 6px 8px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.arch-demo {
+  height: 150px;
+  background: var(--purple);
+  border-radius: 0 0 var(--radius) var(--radius);
+  position: relative;
+  margin-top: 48px;
+}
+.arch-demo::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: -42px;
+  height: 43px;
+  background: var(--purple);
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0,100 Q50,-100 100,100 Z' fill='%23000'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0,100 Q50,-100 100,100 Z' fill='%23000'/></svg>");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.help { font-size: 12px; line-height: 1.45; color: color-mix(in srgb, var(--purple) 70%, transparent); margin-top: 16px; }
+
+.seal { width: 132px; height: 132px; color: var(--purple); }
+.seal.cream { color: var(--cream); width: 88px; height: 88px; }
+.seal text { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; }
+
+.kpi-row { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.15fr; gap: 12px; align-items: end; }
+.kpi-card {
+  border-radius: var(--radius);
+  min-height: 168px;
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.kpi-card .fig {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.proof-row { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 14px; align-items: start; }
+.proof-fig {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--purple);
+  display: inline-block;
+  position: relative;
+  padding-bottom: 10px;
+}
+.proof-fig::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6px;
+  background: var(--chartreuse);
+  border-radius: 999px;
+}
+
+.hero-live {
+  --h-dark: var(--purple);
+  --h-cream: var(--cream);
+  --h-shape: var(--hero-cyan);
+  --h-inner: var(--hero-coral);
+  --h-wave: var(--mustard);
+  --h-mustard: var(--mustard);
+  --h-ink: var(--ink);
+  --h-outline: var(--cream);
+  border-radius: clamp(22px, 3vw, 48px) clamp(22px, 3vw, 48px) 0 0;
+  background: var(--h-dark);
+  color: var(--h-cream);
+  overflow: hidden;
+  position: relative;
+  min-height: 288px;
+}
+.hero-live-copy {
+  position: relative;
+  z-index: 2;
+  padding: 22px 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 52%;
+}
+.hero-live-copy h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(18px, 1.7vw, 26px);
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+.hero-live-copy h3 em { font-style: italic; opacity: 0.7; }
+.hero-live-copy p { margin: 8px 0 0; font-size: 11px; line-height: 1.45; opacity: 0.85; max-width: 36ch; }
+.hero-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.hero-btns .hb {
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.hb-p { background: var(--h-mustard); color: var(--h-ink); }
+.hb-s { box-shadow: inset 0 0 0 1.5px var(--h-outline); color: var(--h-outline); }
+.certs {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  list-style: none;
+  padding: 0;
+}
+.certs li {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--h-cream);
+  padding: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.certs img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  border-radius: 999px;
+}
+.certs img.cover { object-fit: cover; }
+.hero-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  container-type: size;
+  pointer-events: none;
+}
+.hero-svg-wrap {
+  position: absolute;
+  top: 50%;
+  left: 68%;
+  width: max(100cqw, calc(100cqh * 2912 / 1632));
+  height: max(100cqh, calc(100cqw * 1632 / 2912));
+  transform: translate(-68%, -50%);
+}
+.hero-svg-wrap svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.hero-femme {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+  pointer-events: none;
+}
+.hero-asset {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  gap: 22px;
+  align-items: center;
+  margin-top: 16px;
+}
+.hero-asset-aplat {
+  aspect-ratio: 4 / 5;
+  background: var(--cream);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--purple) 18%, transparent);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+.hero-asset-aplat img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+  display: block;
+}
+.hero-seal {
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+  z-index: 3;
+  color: var(--h-cream);
+}
+.hero-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.hero-grid .hero-live { min-height: 168px; }
+.hero-grid .hero-live-copy,
+.hero-grid .hero-seal { display: none; }
+.pal-cap { font-size: 11px; font-weight: 700; margin-top: 6px; color: var(--purple); }
+
+.gal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: start; }
+.gal-item { min-width: 0; margin: 0; }
+.gal-shot {
+  width: 100%;
+  aspect-ratio: 4 / 4.4;
+  background: var(--lilac);
+  position: relative;
+  overflow: visible;
+}
+.gal-shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pal { border-radius: 24px; overflow: hidden; }
+.pal .bar { display: grid; grid-template-columns: repeat(5, 1fr); min-height: 92px; }
+.pal .bar i {
+  display: flex;
+  align-items: flex-end;
+  padding: 8px 8px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+.pal .bar i.ink { color: var(--ink); }
+.pal .bar i.light { color: var(--cream); }
+.pal .meta { padding: 12px 14px 14px; background: var(--cream); }
+.pal .meta strong { display: block; font-size: 14px; }
+.pal .meta span { font-size: 11px; color: color-mix(in srgb, var(--purple) 70%, transparent); }
+
+.scale-demo {
+  font-family: var(--font-display);
+  color: var(--purple);
+  letter-spacing: 0.02em;
+  line-height: 1.06;
+  padding-bottom: 0.18em;
+}
+
+.live-card {
+  border-radius: var(--radius);
+  box-shadow: 0 16px 40px -28px rgba(0, 0, 0, 0.32);
+  padding: 28px;
+  background: var(--lilac);
+  position: relative;
+}
+.live-card.mustard { background: var(--mustard); padding-top: 36px; }
+.live-card .t {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.4vw, 21px);
+  line-height: 1.22;
+  color: var(--purple);
+  padding-bottom: 0.08em;
+}
+.live-card .d {
+  margin-top: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.live-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 14px;
+}
+.live-price .n {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.1;
+  color: var(--purple);
+}
+.live-badge {
+  position: absolute;
+  top: -12px;
+  left: 28px;
+  background: var(--purple);
+  color: var(--cream);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+.opt-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+  list-style: none;
+  padding: 0;
+}
+.formula-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px;
+  list-style: none;
+  padding: 0;
+}
+.card-rule {
+  border: 0;
+  height: 1px;
+  background: color-mix(in srgb, var(--purple) 14%, transparent);
+  margin: 28px 0 0;
+}
+
+.mini-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: color-mix(in srgb, var(--cream) 82%, transparent);
+  border-radius: 999px;
+  padding: 10px 16px;
+  gap: 16px;
+}
+.mini-nav a { font-size: 13px; font-weight: 600; color: var(--purple); text-decoration: none; }
+
+@media print {
+  @page { size: A4 landscape; margin: 12mm; }
+  .slide { break-inside: avoid; }
+}
+@media (max-width: 900px) {
+  .grid-2, .grid-5, .grid-4, .cols, .toc, .gal, .opt-grid, .formula-grid { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .stage { padding: 0 18px 64px; }
+  .slide.dark, .slide.lilac, .slide.mustard { margin: 0 -18px; padding: 40px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="deck">
+  <div class="stage" id="stage">
+
+    <!-- 01 COVER -->
+    <section class="slide dark" data-title="Couverture">
+      <div class="chrome">
+        <div class="brand-row">French Flair · Direction artistique</div>
+        <div class="counter">01 / 18</div>
+      </div>
+      <div class="grow">
+        <p class="tag" style="align-self:flex-start;margin-bottom:18px">Charte graphique 2026</p>
+        <h1 class="display" style="font-size:clamp(48px,6.4vw,92px);max-width:14ch">Audace Pop</h1>
+        <p class="lead" style="margin-top:18px;max-width:36ch">Une RSE qui se voit, qui se vit, et qui compte <em class="em">(vraiment)</em>.</p>
+        <div style="display:flex;gap:10px;margin-top:28px">
+          <span style="width:28px;height:28px;border-radius:999px;background:var(--cream)"></span>
+          <span style="width:28px;height:28px;border-radius:999px;background:var(--lilac)"></span>
+          <span style="width:28px;height:28px;border-radius:999px;background:var(--mustard)"></span>
+          <span style="width:28px;height:28px;border-radius:999px;background:var(--chartreuse)"></span>
+        </div>
+      </div>
+      <div class="foot">
+        <span>Identité visuelle French Flair</span>
+        <span>Agence premium RSE · Paris · Depuis 2017</span>
+      </div>
+    </section>
+
+    <!-- 02 TOC -->
+    <section class="slide" data-title="Sommaire">
+      <div class="chrome">
+        <div class="brand-row">Audace Pop</div>
+        <div class="counter">02 / 18</div>
+      </div>
+      <div class="grow">
+        <h2 class="h2" style="margin-bottom:22px">Sommaire</h2>
+        <div class="toc" id="toc"></div>
+      </div>
+      <div class="foot"><span>Un système, tous les supports</span><span>Print · digital · réseaux · slides</span></div>
+    </section>
+
+    <!-- 03 SPIRIT -->
+    <section class="slide" data-title="Esprit">
+      <div class="chrome">
+        <div class="brand-row">01 · Positionnement</div>
+        <div class="counter"></div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Premium, jamais compassé.</h2>
+        <p class="lead">Le sujet est sérieux ; la livraison refuse d’être ennuyeuse. Audace plutôt que culpabilité. Preuve mesurable plutôt que bonnes intentions.</p>
+        <p class="body" style="margin-top:18px;max-width:62ch">French Flair accompagne les DRH, directions RSE et leads Diversité de grands groupes. La voix est directe, sèche, consciente d’elle-même : l’humour vise l’agence, jamais le sujet ni les personnes. Visuellement, l’offre se pose en cartes à 32 px — aplat lilac, mustard pour la formule mise en avant, Magica au titre, Jakarta au corps.</p>
+        <p class="label" style="margin-top:28px">Exemple d’offre — cartes et formules</p>
+        <ul class="opt-grid">
+          <li class="live-card">
+            <p class="t">Cagnotte solidaire sur mesure</p>
+            <p class="d">Montant du don par participation et plafond de cagnotte que vous définissez librement.</p>
+          </li>
+          <li class="live-card">
+            <p class="t">Personnalisation graphique évolutive</p>
+            <p class="d">Du site à vos couleurs (Essentiel) jusqu’à votre identité graphique complète en marque blanche (Signature).</p>
+          </li>
+          <li class="live-card">
+            <p class="t">Accessibilité numérique intégrée</p>
+            <p class="d">Contraste, taille de texte, interlignage, lecture bionique, mode gaucher, disponible sur toutes les formules.</p>
+          </li>
+          <li class="live-card">
+            <p class="t">Reporting évolutif</p>
+            <p class="d">D’un rapport de campagne standard jusqu’à une analyse par question et par thème avec verbatims et recommandations.</p>
+          </li>
+        </ul>
+        <hr class="card-rule">
+        <ul class="formula-grid">
+          <li class="live-card mustard">
+            <span class="live-badge">Le plus choisi</span>
+            <p class="t">Personnalisé</p>
+            <p class="live-price"><span class="n">7 500 €</span><span class="label">HT</span></p>
+            <p class="d">Tout l’Essentiel, avec un ton et un graphisme adaptés à votre culture d’entreprise, un choix élargi de jeux, une analyse détaillée par question et par thème, et un témoignage client intégré.</p>
+          </li>
+          <li class="live-card">
+            <p class="t">Signature</p>
+            <p class="live-price"><span class="n">à partir de 9 500 €</span><span class="label">HT</span></p>
+            <p class="d">Parcours entièrement sur mesure : questionnaire et jeux spécifiques, identité graphique complète en marque blanche, mécanique de don spécifique, reporting sur mesure. Sur devis.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="foot"><span>Positionnement · voix · offre</span><span>Lilac pour l’option · mustard pour le choix</span></div>
+    </section>
+
+    <!-- 04 LOGO MARK -->
+    <section class="slide" data-title="Signe">
+      <div class="chrome">
+        <div class="brand-row">02 · Identité</div>
+        <div class="counter">04 / 18</div>
+      </div>
+      <div class="grow grid-2">
+        <div>
+          <h2 class="h2">Le signe : l’oiseau. Le lockup : French Flair.</h2>
+          <p class="lead">L’oiseau est la marque : un aplat, jamais confondu avec le violet de fond. Le lockup 2026 le complète — wordmark « French », pastille « Flair », signature « Agence Premium RSE ».</p>
+          <p class="body" style="margin-top:16px">Deux déclinaisons officielles du lockup : violet marque (défaut) et vert sapin (alternative). Le texte du lockup est en ardoise <strong>#3D4F5C</strong> — couleur réservée au logo, jamais ailleurs. Oiseau seul : violet sur clair, crème sur sombre ; lilac et mustard l’accueillent tel quel. Les fichiers terracotta appartiennent à l’ancienne DA : on ne les pose plus.</p>
+        </div>
+        <div style="display:grid;gap:14px">
+          <div class="card" style="display:grid;place-items:center;min-height:150px;background:var(--cream);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--purple) 16%,transparent)">
+            <img src="./assets/ff-logo-2026-purple.svg" alt="Lockup French Flair — violet marque" width="394" height="120" style="display:block;width:280px;height:auto">
+            <p class="label" style="margin-top:12px">Lockup violet · défaut</p>
+          </div>
+          <div class="card" style="display:grid;place-items:center;min-height:150px;background:var(--cream);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--purple) 16%,transparent)">
+            <img src="./assets/ff-logo-2026-green.svg" alt="Lockup French Flair — vert sapin" width="394" height="120" style="display:block;width:280px;height:auto">
+            <p class="label" style="margin-top:12px">Lockup vert sapin · alternative</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+            <div class="card" style="display:grid;place-items:center;background:var(--purple);min-height:120px">
+              <svg class="mark cream" viewBox="0 0 90.7 120.04" aria-hidden="true"><use href="#bird"/></svg>
+            </div>
+            <div class="card" style="display:grid;place-items:center;background:var(--lilac);min-height:120px">
+              <svg class="mark" viewBox="0 0 90.7 120.04" aria-hidden="true"><use href="#bird"/></svg>
+            </div>
+            <div class="card" style="display:grid;place-items:center;background:var(--mustard);min-height:120px">
+              <svg class="mark" viewBox="0 0 90.7 120.04" aria-hidden="true"><use href="#bird"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>Identité · signe &amp; lockup</span><span>Violet défaut · vert sapin alternative</span></div>
+    </section>
+
+    <!-- 05 LOGO RULES -->
+    <section class="slide" data-title="Construction">
+      <div class="chrome">
+        <div class="brand-row">02 · Identité</div>
+        <div class="counter">05 / 18</div>
+      </div>
+      <div class="grow">
+        <h2 class="h2" style="margin-bottom:20px">Construction</h2>
+        <div class="cols" style="margin-top:18px">
+          <div>
+            <p class="label">Aire de protection</p>
+            <div style="margin-top:12px;display:flex;align-items:center;gap:24px">
+              <div style="padding:28px;border:1px dashed color-mix(in srgb,var(--purple) 35%,transparent);border-radius:20px;position:relative">
+                <svg class="mark" style="width:70px" viewBox="0 0 90.7 120.04"><use href="#bird"/></svg>
+              </div>
+              <p class="body" style="max-width:32ch">Un « étincelle » — le petit feuillage en haut à droite — tout autour. Rien n’entre dans cette zone : texte, photo, bord de cadre.</p>
+            </div>
+            <p class="label" style="margin-top:22px">Tailles mini</p>
+            <p class="body" style="margin-top:8px">Écran : 28 px de haut. Print : 8 mm. Favicon : oiseau seul, jamais le lockup.</p>
+          </div>
+          <div>
+            <p class="label">Lockup 2026</p>
+            <img src="./assets/ff-logo-2026-purple.svg" alt="Lockup French Flair — construction" width="394" height="120" style="display:block;width:240px;height:auto;margin-top:12px">
+            <p class="body" style="margin-top:10px">Trois éléments indissociables : l’oiseau, le wordmark « French » et la pastille « Flair » (blanc sur aplat, coins 9 px à cette taille), signés « Agence Premium RSE » en capitales espacées. On ne recompose jamais le lockup à la main : on pose le fichier. Le wordmark Magica « French Flair » reste possible en usage éditorial, graisse unique 400, jamais de gras simulé.</p>
+            <p class="label" style="margin-top:20px">Couleur du signe</p>
+            <p class="body" style="margin-top:8px">Défaut : violet marque. Alternative officielle : vert sapin <strong>#0A3323</strong>. Le texte du lockup reste ardoise #3D4F5C dans les deux cas. Hors Audace Pop, le signe prend le sombre de la palette — assez contrasté pour tenir 3:1 sur le crème.</p>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>Identité · construction</span><span>Aire · minima · wordmark</span></div>
+    </section>
+
+    <!-- 06 DONT -->
+    <section class="slide" data-title="Interdits">
+      <div class="chrome">
+        <div class="brand-row">02 · Identité</div>
+        <div class="counter">06 / 18</div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Ce que le signe refuse</h2>
+        <div class="grid-3" style="margin-top:22px">
+          <div class="dont"><p class="k">Contourner</p><p class="body">Pas de filet, d’ombre grise, de glow. Le signe est un aplat.</p></div>
+          <div class="dont"><p class="k">Recolorer hors rôle</p><p class="body">Pas de dégradé, pas de blanc sur crème, pas de chartreuse en grand aplat logo.</p></div>
+          <div class="dont"><p class="k">Déformer</p><p class="body">Pas d’étirement, de rotation « ludique », de 3D. L’oiseau a déjà du mouvement.</p></div>
+          <div class="dont"><p class="k">Graisse Magica</p><p class="body">Magica n’existe qu’en Regular. Un faux gras bave. L’emphase se fait en couleur ou en italique.</p></div>
+          <div class="dont"><p class="k">Lockup terracotta</p><p class="body">Les fichiers terracotta / nuit sont un reliquat. Seuls les lockups 2026 violet et vert sapin sont officiels.</p></div>
+          <div class="dont"><p class="k">Sixième couleur</p><p class="body">Pas de gris, pas de noir pur, pas de terracotta héritée. L’ardoise #3D4F5C et le vert sapin #0A3323 vivent dans le logo, nulle part ailleurs.</p></div>
+        </div>
+      </div>
+      <div class="foot"><span>Identité · interdits</span><span>Aplat · pas de déformation · une graisse</span></div>
+    </section>
+
+    <!-- 07 COLOR -->
+    <section class="slide" data-title="Palette">
+      <div class="chrome">
+        <div class="brand-row">03 · Couleur</div>
+        <div class="counter">07 / 18</div>
+      </div>
+      <div class="grow">
+        <div style="display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px">
+          <h2 class="h2">Cinq couleurs. Pas de sixième.</h2>
+          <p class="help" style="max-width:36ch">Le gris est interdit : survol, inactif, bordures, ombres, champs vides. Un neutre = une de ces cinq, ou du violet en transparence.</p>
+        </div>
+        <div class="grid-5">
+          <div class="swatch" style="background:var(--cream);color:var(--ink);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--purple) 18%,transparent)">
+            <div class="name">Cream</div>
+            <div>
+              <div class="hex">#F2E8D8</div>
+              <div class="role">Fond dominant. Page, papier, cartes claires.</div>
+            </div>
+          </div>
+          <div class="swatch" style="background:var(--lilac);color:var(--ink)">
+            <div class="name">Lilac</div>
+            <div>
+              <div class="hex">#BEACDF</div>
+              <div class="role">Fond alternatif, cartes, survol secondaire.</div>
+            </div>
+          </div>
+          <div class="swatch" style="background:var(--purple);color:var(--cream)">
+            <div class="name">Purple</div>
+            <div>
+              <div class="hex">#4B0090</div>
+              <div class="role">Titres, encre, unique fond sombre. Rôle, pas teinte.</div>
+            </div>
+          </div>
+          <div class="swatch" style="background:var(--mustard);color:var(--ink)">
+            <div class="name">Mustard</div>
+            <div>
+              <div class="hex">#EDC470</div>
+              <div class="role">Accent chaud. CTA, mise en avant, bande logos.</div>
+            </div>
+          </div>
+          <div class="swatch" style="background:var(--chartreuse);color:var(--ink)">
+            <div class="name">Chartreuse</div>
+            <div>
+              <div class="hex">#EBEF73</div>
+              <div class="role">Filet de preuve, labels, survol CTA. Jamais grand fond de texte.</div>
+            </div>
+          </div>
+        </div>
+        <p class="body" style="margin-top:16px">Encre de lecture <strong>#1A0033</strong> — violet très foncé, pas du noir. Ça ferme la palette.</p>
+      </div>
+      <div class="foot"><span>Couleur · palette</span><span>Cinq jetons · encre #1A0033</span></div>
+    </section>
+
+    <!-- 08 CONTRAST -->
+    <section class="slide lilac" data-title="Contraste">
+      <div class="chrome">
+        <div class="brand-row">03 · Couleur</div>
+        <div class="counter">08 / 18</div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Loi de contraste</h2>
+        <div class="cols" style="margin-top:20px">
+          <div>
+            <div class="do"><p class="k">Texte sombre</p><p class="body">Violet ou encre <strong>sur les quatre clairs</strong>. Cream 12,1:1 · Lilac 6,6:1 · Mustard 8,4:1 · Chartreuse 10,9:1.</p></div>
+            <div class="do" style="margin-top:12px"><p class="k">Texte clair</p><p class="body"><strong>Blanc / crème uniquement sur purple.</strong> 13,6:1. Nulle part ailleurs. Jamais.</p></div>
+          </div>
+          <div>
+            <p class="label">Secondaire, sans gris</p>
+            <p class="body" style="margin-top:8px">Opacité du violet sur fond clair. Crème ~80 % sur violet.</p>
+            <p class="body" style="margin-top:10px">Plancher mesuré : sur crème, purple/70 = 8,0:1 (ok). Sur lilas, purple/75 = <strong>4,11:1 — échoue AA à 12 px</strong>. Petit texte sur lilas = violet plein. Opacité seulement ≥ 24 px.</p>
+            <p class="label">Focus</p>
+            <p class="body" style="margin-top:8px">Anneau 3 px violet, décalage 3 px. Sur fond purple : anneau chartreuse. Le rayon de l’anneau suit celui de l’élément.</p>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>Couleur · contraste</span><span>AA corps 4,5:1 · crème seulement sur purple</span></div>
+    </section>
+
+    <!-- 09 ROLES -->
+    <section class="slide" data-title="Rôles">
+      <div class="chrome">
+        <div class="brand-row">03 · Couleur</div>
+        <div class="counter">09 / 18</div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Un aplat, une région</h2>
+        <p class="lead">Pas des pastilles éparpillées. Une couleur porte une surface, pas un ornement.</p>
+        <div class="grid-4">
+          <div class="pair"><span style="background:var(--cream);color:var(--purple)">Page · papier</span><span style="background:var(--purple);color:var(--cream)">Panneau sombre</span></div>
+          <div class="pair"><span style="background:var(--mustard);color:var(--ink)">Accent · contact</span><span style="background:var(--purple);color:var(--cream)">Pied · sceau</span></div>
+          <div class="pair"><span style="background:var(--lilac);color:var(--ink)">Carte · survol</span><span style="background:var(--chartreuse);color:var(--ink)">Filet 6 px · label</span></div>
+          <div class="pair"><span style="background:var(--hero-cyan);color:var(--ink)">Décor cyan</span><span style="background:var(--hero-coral);color:var(--cream)">Décor corail</span></div>
+        </div>
+        <p class="note" style="margin-top:18px"><strong>Décors.</strong> Cyan #35B5C2 et corail #D56456 peignent uniquement des formes sur le panneau purple. Ce n’est pas une sixième couleur de surface. Hors Audace Pop, ils basculent sur chartreuse / lilac.</p>
+      </div>
+      <div class="foot"><span>Couleur · rôles</span><span>Un aplat = une section</span></div>
+    </section>
+
+    <!-- 10 PALETTES -->
+    <section class="slide" data-title="Territoires">
+      <div class="chrome">
+        <div class="brand-row">03 · Couleur</div>
+        <div class="counter">10 / 18</div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Territoires chromatiques</h2>
+        <p class="lead">Audace Pop est la marque. Les climats de marque gardent les mêmes rôles — un sombre qui porte le blanc, un clair, un accent, un filet — et servent une campagne, une saison, jamais à remplacer le système. Les palettes daltonisme répondent à un besoin différent : rester lisibles et distinctes sous une simulation de daltonisme, pas incarner une ambiance.</p>
+        <p class="label" style="margin-top:8px">Climats de marque</p>
+        <div class="grid-2" style="grid-template-columns:repeat(2,1fr);gap:14px;margin-top:12px">
+          <div class="pal">
+            <div class="bar">
+              <i class="ink" style="background:#F2E8D8">#F2E8D8</i>
+              <i class="ink" style="background:#BEACDF">#BEACDF</i>
+              <i class="light" style="background:#4B0090">#4B0090</i>
+              <i class="ink" style="background:#EDC470">#EDC470</i>
+              <i class="ink" style="background:#EBEF73">#EBEF73</i>
+            </div>
+            <div class="meta"><strong>Audace Pop</strong><span>Marque #4B0090 · le climat officiel, par défaut</span></div>
+          </div>
+          <div class="pal">
+            <div class="bar">
+              <i class="ink" style="background:#F2E8D8">#F2E8D8</i>
+              <i class="ink" style="background:#BEACDF">#BEACDF</i>
+              <i class="light" style="background:#3D1D10">#3D1D10</i>
+              <i class="ink" style="background:#EDC470">#EDC470</i>
+              <i class="ink" style="background:#EBEF73">#EBEF73</i>
+            </div>
+            <div class="meta"><strong>Inclusion</strong><span>Anciennement « Lume », tangerine &amp; wisteria. Pop sans violet. Marque #BF5A32. Fond sombre #3D1D10 (le tangerine brut échoue en fond).</span></div>
+          </div>
+          <div class="pal">
+            <div class="bar">
+              <i class="ink" style="background:#F4F0DD">#F4F0DD</i>
+              <i class="ink" style="background:#A88AED">#A88AED</i>
+              <i class="light" style="background:#26331A">#26331A</i>
+              <i class="ink" style="background:#A6C261">#A6C261</i>
+              <i class="ink" style="background:#C8DE8A">#C8DE8A</i>
+            </div>
+            <div class="meta"><strong>Diversité</strong><span>Anciennement « Sandgrafic », céleri &amp; indigo. Marque = olive foncé #26331A (aucun moyen-ton ≥ 3:1 sur le crème).</span></div>
+          </div>
+          <div class="pal">
+            <div class="bar">
+              <i class="ink" style="background:#E9DACD">#E9DACD</i>
+              <i class="ink" style="background:#E3A2E6">#E3A2E6</i>
+              <i class="light" style="background:#342E24">#342E24</i>
+              <i class="ink" style="background:#FFBE55">#FFBE55</i>
+              <i class="ink" style="background:#FFD98A">#FFD98A</i>
+            </div>
+            <div class="meta"><strong>Accessibilité</strong><span>Anciennement « Themoi », taupe &amp; xanthous. Seul fond sombre authentique de la série. Taupe #342E24.</span></div>
+          </div>
+          <div class="pal" style="grid-column:1/-1">
+            <div class="bar">
+              <i class="ink" style="background:#F7F4D5">#F7F4D5</i>
+              <i class="ink" style="background:#D3968C">#D3968C</i>
+              <i class="light" style="background:#0A3323">#0A3323</i>
+              <i class="ink" style="background:#839958">#839958</i>
+              <i class="ink" style="background:#B8CC7E">#B8CC7E</i>
+            </div>
+            <div class="meta"><strong>QVCT</strong><span>Anciennement « Forêt », vert profond &amp; mousse. Seule palette sans trace de violet. Marque midnight green #105666. Fond #0A3323.</span></div>
+          </div>
+        </div>
+        <p class="label" style="margin-top:24px">Palettes daltonisme</p>
+        <p class="body" style="margin-top:8px;max-width:70ch">Trois palettes, une par type de daltonisme simulé (protanopie, deutéranopie, tritanopie). Elles ne suivent pas la loi de contraste d’Audace Pop à la lettre — chacune est réglée pour rester distincte sous sa propre simulation, pas pour recréer l’identité de marque.</p>
+        <div class="grid-3" style="gap:14px;margin-top:12px">
+          <div class="pal">
+            <div class="bar">
+              <i class="ink" style="background:#F4F1E6">#F4F1E6</i>
+              <i class="ink" style="background:#56B4E9">#56B4E9</i>
+              <i class="light" style="background:#123A72">#123A72</i>
+              <i class="ink" style="background:#E69F00">#E69F00</i>
+              <i class="ink" style="background:#56B4E9">#56B4E9</i>
+            </div>
+            <div class="meta"><strong>Protanopie</strong><span>Insensibilité au rouge. Fond sombre #123A72.</span></div>
+          </div>
+          <div class="pal">
+            <div class="bar">
+              <i class="ink" style="background:#F5F0E4">#F5F0E4</i>
+              <i class="ink" style="background:#C5DFF0">#C5DFF0</i>
+              <i class="light" style="background:#071A1C">#071A1C</i>
+              <i class="ink" style="background:#D55E00">#D55E00</i>
+              <i class="ink" style="background:#FF8C42">#FF8C42</i>
+            </div>
+            <div class="meta"><strong>Deutéranopie</strong><span>Insensibilité au vert. Fond sombre #071A1C.</span></div>
+          </div>
+          <div class="pal">
+            <div class="bar">
+              <i class="ink" style="background:#F6EFE8">#F6EFE8</i>
+              <i class="ink" style="background:#CC79A7">#CC79A7</i>
+              <i class="light" style="background:#5C2A1C">#5C2A1C</i>
+              <i class="ink" style="background:#009E73">#009E73</i>
+              <i class="ink" style="background:#E07A5F">#E07A5F</i>
+            </div>
+            <div class="meta"><strong>Tritanopie</strong><span>Insensibilité au bleu-jaune. Fond sombre #5C2A1C.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>Couleur · territoires</span><span>8 climats · même rôles</span></div>
+    </section>
+
+    <!-- 11 TYPE MAGICA -->
+    <section class="slide" data-title="Magica">
+      <div class="chrome">
+        <div class="brand-row">04 · Typographie</div>
+        <div class="counter">11 / 18</div>
+      </div>
+      <div class="grow">
+        <p class="label">Display · titres uniquement</p>
+        <p class="scale-demo" style="font-size:clamp(40px,6vw,84px);margin:12px 0 36px">Magica</p>
+        <p class="lead">Une seule coupe : Regular 400. Pas d’italique dessinée — l’oblique vient du navigateur. Pas de gras : il serait simulé et bave. Titres uniquement, print comme digital.</p>
+        <div class="type-row" style="margin-top:28px">
+          <div class="scale-demo" style="font-size:clamp(28px,3.2vw,52px)">Une RSE qui se voit, <em>vraiment</em></div>
+          <div><span class="mono">Display · 44–104 px · interligne 1,06 · +0,02 em</span><p class="help" style="margin-top:6px">Plafonné à 52 px quand l’espace est court.</p></div>
+        </div>
+        <div class="type-row">
+          <div class="scale-demo" style="font-size:clamp(24px,2.4vw,40px);line-height:1.26">Des engagements convertis en résultats</div>
+          <div><span class="mono">Titre 2 · 28–60 px · interligne 1,26</span><p class="help" style="margin-top:6px">Interligne large : les accents Magica dépassent l’em.</p></div>
+        </div>
+        <div class="type-row">
+          <div class="scale-demo" style="font-size:clamp(19px,1.6vw,30px);line-height:1.18">Titre de carte, pied, méthode</div>
+          <div><span class="mono">Titre 3 · 19–30 px · interligne 1,18</span></div>
+        </div>
+        <p class="note" style="margin-top:16px"><strong>Loi d’emphase.</strong> Dans un titre, le contraste vient de la couleur ou de l’italique. Jamais d’un changement de corps en milieu de phrase. Le poids, avec Magica, n’existe pas.</p>
+      </div>
+      <div class="foot"><span>Typographie · display</span><span>Magica Regular 400 · titres seulement</span></div>
+    </section>
+
+    <!-- 12 JAKARTA -->
+    <section class="slide" data-title="Corps">
+      <div class="chrome">
+        <div class="brand-row">04 · Typographie</div>
+        <div class="counter">12 / 18</div>
+      </div>
+      <div class="grow grid-2">
+        <div>
+          <p class="label">Corps · toutes les surfaces</p>
+          <p class="h2" style="font-family:var(--font-body);font-weight:700;letter-spacing:0;margin-top:8px">Plus Jakarta Sans</p>
+          <p class="body" style="margin-top:14px;font-size:17px;line-height:1.65;max-width:42ch">Le texte court à 17 px / 500 / interligne 1,65 / mesure 68 caractères. Print : 9–11 pt, même graisses. C’est la voix utile : navigation, formulaires, légendes, courrier.</p>
+          <p class="body" style="margin-top:14px;font-size:17px;font-weight:600">Semi-bold 600 pour les CTA et les liens.</p>
+          <p class="label" style="margin-top:22px;letter-spacing:0.16em">Label 12 px · tracking 0,16 em · uppercase</p>
+          <p class="help" style="margin-top:8px">Eyebrow de section, tags, titres de colonnes. Souvent chartreuse sur purple.</p>
+        </div>
+        <div class="card" style="background:var(--lilac)">
+          <p style="font-size:17px;font-weight:500;line-height:1.65">French Flair est une agence premium RSE à Paris. Diagnostic, stratégie, déploiement, formation — y compris en VR. Les acheteurs parlent COMEX et régulateur : on leur parle chiffres.</p>
+          <p class="label" style="margin-top:20px">Aa Bb Cc 0123456789</p>
+          <p class="body" style="margin-top:8px">400 500 600 700 · italique autorisée</p>
+          <p class="mono" style="margin-top:16px">Corps · 17 px / 500 / 1,65 / 68 car.</p>
+          <p class="mono" style="margin-top:8px">Label · 12 px / 700 / 0,16 em / caps</p>
+        </div>
+      </div>
+      <div class="foot"><span>Typographie · corps</span><span>Jakarta 400–700 · italique autorisée</span></div>
+    </section>
+
+    <!-- 13 GRID -->
+    <section class="slide" data-title="Rythme">
+      <div class="chrome">
+        <div class="brand-row">05 · Forme</div>
+        <div class="counter">13 / 18</div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Respirer</h2>
+        <div class="cols" style="margin-top:22px">
+          <div class="card" style="background:var(--lilac)">
+            <p class="label">Largeur</p>
+            <p class="h2" style="font-size:32px">Généreuse</p>
+            <p class="body" style="margin-top:10px">Digital : la gouttière <strong>est</strong> la marge, jusqu’à 60 px. Print : 12–15 mm minimum. On ne double pas l’inset « pour centrer ».</p>
+          </div>
+          <div class="card" style="background:var(--mustard)">
+            <p class="label">Rythme vertical</p>
+            <p class="h2" style="font-size:32px">80 / 112</p>
+            <p class="body" style="margin-top:10px">Entre deux blocs : 80 px (serré) ou 112 px (ample). Une jointure vaut le double. Zone tactile mini : 44 px.</p>
+          </div>
+        </div>
+        <div style="margin-top:16px;display:grid;grid-template-columns:repeat(12,1fr);gap:8px">
+          <div style="grid-column:span 12;height:10px;background:var(--purple);border-radius:99px;opacity:.2"></div>
+          <div style="grid-column:span 7;height:36px;background:var(--purple);border-radius:12px"></div>
+          <div style="grid-column:span 5;height:36px;background:var(--lilac);border-radius:12px"></div>
+        </div>
+        <p class="help" style="margin-top:12px">L’œil a besoin d’air. Si ça colle, on a trop serré — pas « trop de contenu ».</p>
+      </div>
+      <div class="foot"><span>Forme · rythme</span><span>Gouttière = marge · 80 / 112</span></div>
+    </section>
+
+    <!-- 14 SHAPE -->
+    <section class="slide" data-title="Rayon">
+      <div class="chrome">
+        <div class="brand-row">05 · Forme</div>
+        <div class="counter">14 / 18</div>
+      </div>
+      <div class="grow grid-2">
+        <div>
+          <h2 class="h2">Le rayon, le geste</h2>
+          <p class="lead">Boutons, cartes, encarts : un seul rayon, 32 px. Les pilules (999 px) sont réservées aux tags, aux badges, aux mentions courtes.</p>
+          <p class="body" style="margin-top:14px">Panneaux pleine largeur : coins hauts seulement, 28 à 64 px. Le crème du fond reste visible dans les deux encoches — c’est la signature, print comme écran.</p>
+          <p class="body" style="margin-top:12px">Bordures : violet 12–22 %, 1 px. Ombres : décalage Y + flou, jamais un halo à 0. L’ombre est neutre, pas un glow violet.</p>
+          <p class="body" style="margin-top:12px">La photo sort du rectangle : encoche, biais, chamfer. Même univers de forme, pas un habillage à part.</p>
+        </div>
+        <div>
+          <div class="arch-demo">
+            <p class="label" style="color:var(--chartreuse);padding:56px 24px 0">Arche · Bézier, pas un border-radius</p>
+          </div>
+          <p class="help" style="margin-top:12px">Deux coins elliptiques font un S. L’arche est un calque masqué, couleur héritée, 28 à 100 px de haut. Elle ne se lit qu’entre deux couleurs différentes.</p>
+        </div>
+      </div>
+      <div class="foot"><span>Forme · rayon 32 px · arche</span><span>Pilule = tag · pas carte</span></div>
+    </section>
+
+    <!-- 15 BUTTONS -->
+    <section class="slide" data-title="Appels">
+      <div class="chrome">
+        <div class="brand-row">06 · Actions</div>
+        <div class="counter">15 / 18</div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Les appels à l’action</h2>
+        <p class="lead">Pastilles plates. Pas de 3D, pas de translate. L’état se lit sur le fond. Padding 15×30, Jakarta 16/600, rayon 32.</p>
+        <div class="grid-3">
+          <div class="card" style="background:var(--purple);color:var(--cream)">
+            <p class="label">Primaire · mustard</p>
+            <div class="btn-row" style="margin-top:14px">
+              <span class="btn btn-primary">Prendre rendez-vous</span>
+            </div>
+            <p class="help" style="margin-top:12px;color:color-mix(in srgb,var(--cream) 75%,transparent)">Survol chartreuse · appui chartreuse mélangée 88 % encre. Encre constante. Ne pas poser sur un aplat mustard.</p>
+          </div>
+          <div class="card" style="background:var(--lilac)">
+            <p class="label">Secondaire · contour</p>
+            <div class="btn-row" style="margin-top:14px">
+              <span class="btn btn-sec">Découvrir</span>
+              <span class="btn btn-sec hov">Survol</span>
+            </div>
+            <p class="help" style="margin-top:12px">Crème, filet 2 px purple. Survol lilac. Actif : filet 3 px.</p>
+          </div>
+          <div class="card" style="background:var(--mustard)">
+            <p class="label">Sur mustard</p>
+            <div class="btn-row" style="margin-top:14px">
+              <span class="btn btn-onm">Envoyer</span>
+            </div>
+            <p class="help" style="margin-top:12px">Purple + crème. Le primaire disparaîtrait (mustard sur mustard). Survol : purple éclairci vers crème.</p>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>Actions · primaire mustard · secondaire contour</span><span>Sur mustard : purple + crème</span></div>
+    </section>
+
+    <!-- 16 CHROME -->
+    <section class="slide" data-title="Sceau">
+      <div class="chrome">
+        <div class="brand-row">06 · Actions</div>
+        <div class="counter"></div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Le sceau</h2>
+        <div class="mini-nav">
+          <svg class="mark" style="width:28px" viewBox="0 0 90.7 120.04"><use href="#bird"/></svg>
+          <div style="display:flex;gap:18px">
+            <a>Catalogue</a><a>Réalisations</a><a>Équipe</a><a>SEEPH26</a>
+          </div>
+          <span class="btn btn-primary" style="padding:10px 18px;font-size:14px">Contact</span>
+        </div>
+        <p class="help">Barre pleine largeur au repos. Une fois collée : pilule. CTA mustard. Liens Jakarta 17/600, survol lilac.</p>
+        <div class="cols" style="margin-top:16px;grid-template-columns:1fr 1.1fr">
+          <div class="card" style="background:var(--purple);color:var(--cream);min-height:200px;display:flex;flex-direction:column;justify-content:space-between">
+            <p class="label">Pied de page</p>
+            <p class="h2" style="font-size:28px;color:#fff">French Flair</p>
+            <p class="label">Pratiques · Agence · Suivre — labels chartreuse, liens crème</p>
+          </div>
+          <div class="card" style="background:var(--lilac);min-height:200px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center">
+            <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <path id="seal-chrome" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0" fill="none"/>
+              </defs>
+              <text fill="currentColor" font-size="13.2" text-anchor="start">
+                <textPath href="#seal-chrome" textLength="477" lengthAdjust="spacing">AGENCE RSE PREMIUM · PARIS · DEPUIS 2017 ·</textPath>
+              </text>
+            </svg>
+            <div>
+              <p class="label">Sceau</p>
+              <p class="body" style="margin-top:8px">Le cercle n’est pas dessiné. Seules les lettres ferment la boucle. Jakarta 15/700 caps. Pas de filet, pas d’anneau. En motion : 22 s de rotation. À l’arrêt : les lettres restent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>Sceau · lettres seules</span><span>Jamais un trait de cercle</span></div>
+    </section>
+
+    <!-- 17 KPI -->
+    <section class="slide" data-title="Preuve">
+      <div class="chrome">
+        <div class="brand-row">06 · Preuve</div>
+        <div class="counter"></div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Les chiffres qui prouvent</h2>
+        <p class="lead">Deux traitements, jamais mélangés. Soit l’aplat porte le chiffre (cartes mustard, lilac, purple, chartreuse). Soit un filet chartreuse 6 px, barre droite, extrémités arrondies — réservé aux preuves, jamais une couleur de texte.</p>
+        <div class="kpi-row">
+          <div class="kpi-card" style="background:var(--mustard);color:var(--ink);min-height:200px">
+            <p class="fig">98 %</p>
+            <p class="label" style="margin-top:10px;color:var(--ink)">Satisfaction client</p>
+          </div>
+          <div class="kpi-card" style="background:var(--lilac);color:var(--ink)">
+            <p class="fig">+150</p>
+            <p class="label" style="margin-top:10px">Projets délivrés</p>
+          </div>
+          <div class="kpi-card" style="background:var(--purple);color:var(--cream)">
+            <p class="fig" style="color:#fff">3 000</p>
+            <p class="label" style="margin-top:10px;color:var(--cream)">Personnes formées</p>
+          </div>
+          <div class="kpi-card" style="background:var(--chartreuse);color:var(--ink)">
+            <p class="fig">11 000</p>
+            <p class="label" style="margin-top:10px;color:var(--ink)">Sensibilisé(e)s</p>
+          </div>
+        </div>
+        <p class="label" style="margin-top:16px">Motif filet</p>
+        <div class="proof-row">
+          <div>
+            <span class="proof-fig">42</span>
+            <p class="label" style="margin-top:14px">Projets conduits</p>
+          </div>
+          <div>
+            <span class="proof-fig">12</span>
+            <p class="label" style="margin-top:14px">Pays</p>
+          </div>
+          <div>
+            <span class="proof-fig">2017</span>
+            <p class="label" style="margin-top:14px">Depuis</p>
+          </div>
+          <p class="help" style="max-width:28ch;align-self:center">Magica + filet chartreuse 6 px. Barre droite, extrémités arrondies. Uniquement sous un chiffre qui prouve.</p>
+        </div>
+      </div>
+      <div class="foot"><span>Preuve · aplat ou filet</span><span>Jamais les deux ensemble</span></div>
+    </section>
+
+    <!-- 18 COMPOSITION -->
+    <section class="slide" data-title="Composition">
+      <div class="chrome">
+        <div class="brand-row">07 · Image</div>
+        <div class="counter"></div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">La composition signature</h2>
+        <p class="lead">Le fond du hero n’est pas une image : c’est un empilement de calques qui se repeignent indépendamment — un fond uni, une vague, un squircle et son blob, un détourage. Un climat ne change que la couleur des calques ; la photo, elle, ne bouge jamais.</p>
+        <div class="grid-4" style="margin-top:18px">
+          <div>
+            <div class="hero-live" data-hero-art="decon-fond" data-hero-layers="" aria-hidden="true" style="min-height:150px"></div>
+            <p class="pal-cap">1 · Fond</p>
+          </div>
+          <div>
+            <div class="hero-live" data-hero-art="decon-vague" data-hero-layers="vague" aria-hidden="true" style="min-height:150px"></div>
+            <p class="pal-cap">+ Vague</p>
+          </div>
+          <div>
+            <div class="hero-live" data-hero-art="decon-formes" data-hero-layers="vague,formes" aria-hidden="true" style="min-height:150px"></div>
+            <p class="pal-cap">+ Formes</p>
+          </div>
+          <div>
+            <div class="hero-live" data-hero-art="decon-femme" data-hero-layers="vague,formes,femme" aria-hidden="true" style="min-height:150px"></div>
+            <p class="pal-cap">+ Détourage = résultat</p>
+          </div>
+        </div>
+        <div class="hero-live" data-hero-art="main" style="min-height:420px;margin-top:28px">
+          <div class="hero-live-copy">
+            <h3>Une RSE qui se voit,<br>qui se vit, et qui compte<br><em>(vraiment)</em></h3>
+            <p>Diversité &amp; Inclusion, Handicap, QVCT : vos obligations légales méritent mieux qu’une case à cocher.</p>
+            <div class="hero-btns">
+              <span class="hb hb-p">On papote ?</span>
+              <span class="hb hb-s">Voir ce qu’on sait faire</span>
+            </div>
+            <ul class="certs">
+              <li><img src="../frenchflair-website/public/badges/badge_bpi-france-round.webp" alt="Bpifrance Accélérateurs"></li>
+              <li><img src="../frenchflair-website/public/badges/badge_french-tech-round.webp" alt="La French Tech"></li>
+              <li><img src="../frenchflair-website/public/badges/badge_handi-angage.webp" alt="Label Employeur Handi-Engagé"></li>
+            </ul>
+          </div>
+          <svg class="seal hero-seal" viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <path id="seal-hero" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0" fill="none"/>
+            </defs>
+            <text fill="currentColor" font-size="13.2">
+              <textPath href="#seal-hero" textLength="477" lengthAdjust="spacing">AGENCE RSE PREMIUM · PARIS · DEPUIS 2017 ·</textPath>
+            </text>
+          </svg>
+        </div>
+        <p class="help" style="margin-top:10px">Trois pastilles rondes seulement : Bpifrance, French Tech, Handi-Engagé. Qualiopi n’est plus une pastille — lockup rectangulaire dédié, cartouche blanc, jamais recadré en cercle (ci-dessous).</p>
+        <div class="hero-asset">
+          <div class="hero-asset-aplat">
+            <img src="../frenchflair-website/public/hero/hero_homepage_desk_femme.webp" alt="Détourage femme, hero accueil">
+          </div>
+          <div>
+            <p class="label">Détourage</p>
+            <p class="body" style="margin-top:8px">Sujet à droite, transparence conservée. L’alpha laisse passer cyan, corail et vague. Jamais recadré dans un rectangle. Aplat crème ici pour lire le contour — pas de dégradé.</p>
+          </div>
+        </div>
+        <div class="cols" style="margin-top:18px">
+          <div class="card" style="background:#fff;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--purple) 16%,transparent);display:flex;align-items:center;gap:16px;padding:16px">
+            <img src="../frenchflair-website/public/badges/badge_logo-Qualiopi-2026.webp" alt="Certification Qualiopi · Actions de formation" style="width:130px;border-radius:14px;flex-shrink:0">
+            <p class="body">Qualiopi : lockup officiel, cartouche blanc obligatoire, coins 28px. Jamais en pastille ronde, jamais recoloré. Renvoie vers le certificat.</p>
+          </div>
+          <div class="note">Panneau purple, vague mustard, squircle cyan, blob corail, photo au-dessus, copie à gauche, sceau crème en bas à droite. Les décors ne sont pas des couleurs de surface.</div>
+        </div>
+      </div>
+      <div class="foot"><span>Image · composition</span><span>Calques · détourage · badges</span></div>
+    </section>
+
+    <!-- 19 CLIMATS -->
+    <section class="slide" data-title="Climats">
+      <div class="chrome">
+        <div class="brand-row">07 · Image</div>
+        <div class="counter"></div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Même image, autre climat</h2>
+        <p class="lead">Le sombre change de teinte, pas de rôle. La photo ne bouge pas. Seules les formes se repeignent — cyan et corail deviennent chartreuse et lilac hors Audace Pop.</p>
+        <div class="hero-grid">
+          <div>
+            <div class="hero-live" data-hero-art="pop"></div>
+            <p class="pal-cap">Audace Pop · #4B0090</p>
+          </div>
+          <div>
+            <div class="hero-live" data-hero-art="lume" style="--h-dark:#3D1D10;--h-shape:#EBEF73;--h-inner:#BEACDF;--h-wave:#EDC470;--h-mustard:#EDC470"></div>
+            <p class="pal-cap">Inclusion · tangerine</p>
+          </div>
+          <div>
+            <div class="hero-live" data-hero-art="sand" style="--h-dark:#26331A;--h-cream:#F4F0DD;--h-shape:#C8DE8A;--h-inner:#A88AED;--h-wave:#A6C261;--h-mustard:#A6C261;--h-ink:#1C2412"></div>
+            <p class="pal-cap">Diversité · céleri</p>
+          </div>
+          <div>
+            <div class="hero-live" data-hero-art="moi" style="--h-dark:#342E24;--h-cream:#E9DACD;--h-shape:#FFD98A;--h-inner:#E3A2E6;--h-wave:#FFBE55;--h-mustard:#FFBE55;--h-ink:#241F18"></div>
+            <p class="pal-cap">Accessibilité · taupe</p>
+          </div>
+          <div>
+            <div class="hero-live" data-hero-art="foret" style="--h-dark:#0A3323;--h-cream:#F7F4D5;--h-shape:#B8CC7E;--h-inner:#D3968C;--h-wave:#839958;--h-mustard:#839958;--h-ink:#0A2119"></div>
+            <p class="pal-cap">QVCT · forêt</p>
+          </div>
+        </div>
+        <p class="help" style="margin-top:10px">Inclusion retire le violet. QVCT est la seule sans trace de violet. Dans tous les cas : la femme reste, les formes changent.</p>
+        <p class="label" style="margin-top:22px">Daltonisme — même mécanique, un autre objectif</p>
+        <p class="body" style="margin-top:8px;max-width:70ch">Pas des climats de marque : ces trois-là sont réglés pour rester distincts sous simulation de daltonisme, pas pour incarner une campagne.</p>
+        <div class="hero-grid" style="grid-template-columns:repeat(3,1fr);margin-top:12px">
+          <div>
+            <div class="hero-live" data-hero-art="protan" style="--h-dark:#123A72;--h-cream:#F4F1E6;--h-shape:#E69F00;--h-inner:#56B4E9;--h-wave:color-mix(in oklab, #56B4E9 55%, #123A72);--h-mustard:#E69F00;--h-ink:#0A1F42"></div>
+            <p class="pal-cap">Protanopie</p>
+          </div>
+          <div>
+            <div class="hero-live" data-hero-art="deutan" style="--h-dark:#071A1C;--h-cream:#F5F0E4;--h-shape:#D55E00;--h-inner:#C5DFF0;--h-wave:color-mix(in oklab, #C5DFF0 45%, #071A1C);--h-mustard:#D55E00;--h-ink:#061618"></div>
+            <p class="pal-cap">Deutéranopie</p>
+          </div>
+          <div>
+            <div class="hero-live" data-hero-art="tritan" style="--h-dark:#5C2A1C;--h-cream:#F6EFE8;--h-shape:color-mix(in oklab, #009E73 55%, #5C2A1C);--h-inner:#CC79A7;--h-wave:#009E73;--h-mustard:#009E73;--h-ink:#30160F"></div>
+            <p class="pal-cap">Tritanopie</p>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>Image · climats</span><span>8 climats · la photo est constante</span></div>
+    </section>
+
+    <!-- 20 REALISATIONS -->
+    <section class="slide" data-title="Photographie">
+      <div class="chrome">
+        <div class="brand-row">07 · Image</div>
+        <div class="counter"></div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">La photo sort du rectangle</h2>
+        <p class="lead">Encoche, biais, chamfer. L’image est un aplat dans le clip. S’il manque une photo : une couleur de palette, jamais un dégradé.</p>
+        <div class="gal">
+          <figure class="gal-item">
+            <div class="gal-shot" style="clip-path:url(#ff-clip-bevel-tl);background:#4B0090">
+              <img src="../frenchflair-website/public/realisations/thumb_1pad.webp" alt="1PAD">
+            </div>
+          </figure>
+          <figure class="gal-item">
+            <div class="gal-shot" style="clip-path:url(#ff-clip-notch-tr);background:#BEACDF">
+              <img src="../frenchflair-website/public/realisations/thumb_roadshow.webp" alt="Roadshow national">
+            </div>
+          </figure>
+          <figure class="gal-item">
+            <div class="gal-shot" style="clip-path:url(#ff-clip-chamfer-tr);background:#EDC470">
+              <img src="../frenchflair-website/public/realisations/thumb_e-learning.webp" alt="E-Learning">
+            </div>
+          </figure>
+          <figure class="gal-item">
+            <div class="gal-shot" style="clip-path:url(#ff-clip-notch-bl);background:#EBEF73">
+              <img src="../frenchflair-website/public/realisations/thumb_serious-game.webp" alt="Serious Game Diversité" style="object-position:64% center">
+            </div>
+          </figure>
+          <figure class="gal-item">
+            <div class="gal-shot" style="clip-path:url(#ff-clip-bevel-bl);background:#BF5A32">
+              <img src="../frenchflair-website/public/realisations/thumb_jouer-cest-donner.webp" alt="Jouer C'est Donner">
+            </div>
+          </figure>
+          <figure class="gal-item">
+            <div class="gal-shot" style="clip-path:url(#ff-clip-bevel-tl);background:#839958">
+              <img src="../frenchflair-website/public/realisations/thumb_immersion-handicap.webp" alt="Immersion Handicap">
+            </div>
+          </figure>
+          <figure class="gal-item">
+            <div class="gal-shot" style="clip-path:url(#ff-clip-bevel-tl);background:#A88AED">
+              <img src="../frenchflair-website/public/realisations/thumb_handi-olympiade.webp" alt="Handi-Olympiades">
+            </div>
+          </figure>
+        </div>
+      </div>
+      <div class="foot"><span>Image · découpes</span><span>Aplat si l’image manque · pas de dégradé</span></div>
+    </section>
+
+    <!-- 21 MOTION -->
+    <section class="slide" data-title="Mouvement">
+      <div class="chrome">
+        <div class="brand-row">08 · Mouvement</div>
+        <div class="counter"></div>
+      </div>
+      <div class="grow grid-2">
+        <div>
+          <h2 class="h2">Un geste, pas un spectacle</h2>
+          <p class="lead">Ease ample, 200 à 420 ms, depuis un état déjà visible. Rien n’attend le script pour exister.</p>
+          <p class="body" style="margin-top:12px">Deux continus seulement : défilement de logos, rotation du sceau (22 s). Le reste est un geste par bloc. Photo éditoriale, sujet à droite. Pictos stock interdits. Un emplacement vide se raye — on ne l’invente pas.</p>
+        </div>
+        <div class="card" style="background:var(--lilac)">
+          <p class="label">Moins de mouvement</p>
+          <p class="body" style="margin-top:10px">Le défilement s’enroule, le sceau s’arrête, les calques cessent de glisser. La marque tient sans animation.</p>
+        </div>
+      </div>
+      <div class="foot"><span>Mouvement · un geste par bloc</span><span>La marque tient à l’arrêt</span></div>
+    </section>
+
+    <!-- 22 APPLICATIONS -->
+    <section class="slide" data-title="Supports">
+      <div class="chrome">
+        <div class="brand-row">09 · Supports</div>
+        <div class="counter"></div>
+      </div>
+      <div class="grow">
+        <h2 class="h2">Le même système, partout</h2>
+        <p class="lead">Print, slides, réseaux, écran : cinq couleurs, Magica aux titres, Jakarta au corps, rayon 32 px, photo hors rectangle. On n’invente pas un autre langage selon le format.</p>
+        <div class="grid-3" style="margin-top:8px">
+          <div class="card">
+            <p class="label">Print</p>
+            <p class="body" style="margin-top:12px">Papier crème. Titres Magica, corps 9–11 pt. Oiseau 8 mm mini. Pas de dégradé, pas de gris. Un aplat par région.</p>
+          </div>
+          <div class="card">
+            <p class="label">Slides</p>
+            <p class="body" style="margin-top:12px">Fond crème ou purple. Preuve : filet chartreuse ou carte en aplat. Sceau en coins. Une idée par écran.</p>
+          </div>
+          <div class="card">
+            <p class="label">Réseaux</p>
+            <p class="body" style="margin-top:12px">Carré ou 4:5. Oiseau + Magica. CTA mustard. Détourage ou découpe — jamais un cadre photo banal.</p>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>French Flair · Audace Pop</span><span>Tous les supports</span></div>
+    </section>
+
+  </div>
+</div>
+
+<svg aria-hidden="true" focusable="false" class="clip-defs">
+  <defs>
+    <clipPath id="ff-clip-notch-tr" clipPathUnits="objectBoundingBox">
+      <path d="M0 0.041736 C0 0.018685 0.025071 0 0.056 0 H0.6105 C0.641429 0 0.6665 0.018685 0.6665 0.041736 V0.148048 C0.6665 0.171099 0.691571 0.189784 0.7225 0.189784 H0.944 C0.974929 0.189784 1 0.208469 1 0.23152 V0.958264 C1 0.981315 0.974929 1 0.944 1 H0.056 C0.025071 1 0 0.981315 0 0.958264 Z"/>
+    </clipPath>
+    <clipPath id="ff-clip-notch-tl" clipPathUnits="objectBoundingBox">
+      <path d="M0 0.041736 C0 0.018685 0.025071 0 0.056 0 H0.6105 C0.641429 0 0.6665 0.018685 0.6665 0.041736 V0.148048 C0.6665 0.171099 0.691571 0.189784 0.7225 0.189784 H0.944 C0.974929 0.189784 1 0.208469 1 0.23152 V0.958264 C1 0.981315 0.974929 1 0.944 1 H0.056 C0.025071 1 0 0.981315 0 0.958264 Z" transform="translate(1,0) scale(-1,1)"/>
+    </clipPath>
+    <clipPath id="ff-clip-notch-bl" clipPathUnits="objectBoundingBox">
+      <path d="M0 0.041736 C0 0.018685 0.025071 0 0.056 0 H0.6105 C0.641429 0 0.6665 0.018685 0.6665 0.041736 V0.148048 C0.6665 0.171099 0.691571 0.189784 0.7225 0.189784 H0.944 C0.974929 0.189784 1 0.208469 1 0.23152 V0.958264 C1 0.981315 0.974929 1 0.944 1 H0.056 C0.025071 1 0 0.981315 0 0.958264 Z" transform="translate(1,1) scale(-1,-1)"/>
+    </clipPath>
+    <clipPath id="ff-clip-chamfer-tr" clipPathUnits="objectBoundingBox">
+      <path d="M0 0.0351351C0 0.0157306 0.0174609 0 0.039 0H0.5H0.727414C0.741798 0 0.755513 0.00547207 0.765179 0.0150678L0.858 0.107207L0.98622 0.236143C0.995093 0.245066 1 0.256625 1 0.268605V0.5V0.964865C1 0.984269 0.982539 1 0.961 1H0.039C0.0174609 1 0 0.984269 0 0.964865V0.0351351Z"/>
+    </clipPath>
+    <clipPath id="ff-clip-bevel-tl" clipPathUnits="objectBoundingBox">
+      <path d="M0.1145 0.139138L0.235656 0.0147291C0.244771 0.0053695 0.257945 0 0.271794 0H0.5H0.96C0.982091 0 1 0.016076 1 0.0359066V0.964093C1 0.983924 0.982091 1 0.96 1H0.04C0.0179086 1 0 0.983924 0 0.964093V0.5V0.265845C0 0.255659 0.00428628 0.24585 0.0120005 0.238381L0.1145 0.139138Z"/>
+    </clipPath>
+    <clipPath id="ff-clip-bevel-bl" clipPathUnits="objectBoundingBox">
+      <path d="M0.1145 0.139138L0.235656 0.0147291C0.244771 0.0053695 0.257945 0 0.271794 0H0.5H0.96C0.982091 0 1 0.016076 1 0.0359066V0.964093C1 0.983924 0.982091 1 0.96 1H0.04C0.0179086 1 0 0.983924 0 0.964093V0.5V0.265845C0 0.255659 0.00428628 0.24585 0.0120005 0.238381L0.1145 0.139138Z" transform="translate(0,1) scale(1,-1)"/>
+    </clipPath>
+  </defs>
+  <symbol id="bird" viewBox="0 0 90.7 120.04">
+    <path d="M30.08,51.23c1.03-1.18.17-3.03-1.4-3.01-6.52.1-18.27-.96-23.44-9.24C-.23,30.23-.27,21.32.16,17.04c.07-.76,1.04-1.01,1.47-.37,1.9,2.84,6.48,7.46,14.58,9.74.87.24,1.6-.68,1.18-1.47-1.16-2.16-2.61-5.21-3.01-8.03-.07-.5.53-.81.91-.47,1.99,1.78,6.84,4.94,13.12,6.99,1.12.37,1.8-.26,1.51-1.41-.32-1.27-.7-2.85-.95-4.25-.07-.42.41-.7.74-.42,2.44,2.08,9.23,7.64,14.7,9.86,6.8,2.76,10.17,5.94,13.24,9.01,3.48,3.48,2.08,6.81,3.13,8.27.41.57,5.69,4.42,8.56,6.08.51.3.31,1.08-.28,1.09-8.05.19-35.57,2.45-38.13,24.21-2.38,20.29,12.77,35.06,21.55,41.82,1.14.88.24,2.69-1.14,2.29-11.02-3.18-32.19-12.43-33.52-36.87-.8-14.71,7.52-26.45,12.27-31.89h-.01Z"/>
+    <path d="M80.8,6.15l-6.02,4.22c-.72.5-.62,1.6.18,1.96l1.44.65c.4.18.86.12,1.2-.16l5.02-4.2c.75-.63.65-1.81-.2-2.3l-.4-.23c-.38-.22-.86-.2-1.22.05h0Z"/>
+    <path d="M84.43,4.68l1.35.31c.24.06.5-.02.67-.2,0,0,3.93-4.28,4.16-4.52s-.05-.37-.38-.19l-6,3.28c-.55.33-.42,1.16.2,1.3v.02Z"/>
+    <path d="M68.59,20.27l4.19-3.44c.75-.62.49-1.83-.45-2.08l-2.58-.7c-.41-.11-.85-.04-1.21.19l-4.78,3.16c-.96.63-.74,2.09.35,2.43l2.63.8c.64.19,1.33.06,1.84-.36h.01Z"/>
+    <path d="M58.04,21.19l-4.43,2.93c-.84.56-.88,1.78-.08,2.39l3.03,2.31c.56.43,1.34.39,1.86-.07l4.61-4.12c.83-.74.56-2.11-.5-2.48l-3.22-1.12c-.43-.15-.91-.09-1.29.16h.02Z"/>
+  </symbol>
+</svg>
+
+<script>
+const slides = [...document.querySelectorAll(".slide")];
+const toc = document.getElementById("toc");
+
+function paintCounters() {
+  const total = String(slides.length).padStart(2, "0");
+  slides.forEach((s, k) => {
+    s.id = "f" + String(k + 1).padStart(2, "0");
+    const c = s.querySelector(".counter");
+    if (c) c.textContent = String(k + 1).padStart(2, "0") + " / " + total;
+  });
+}
+
+function go(n) {
+  const el = slides[n];
+  if (!el) return;
+  history.replaceState(null, "", "#" + el.id);
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+paintCounters();
+
+/* Composition signature : vague + squircle + détourage, cadrage desk.
+   `data-hero-layers` (liste séparée par des virgules parmi vague, formes,
+   femme) permet de peindre un calque à la fois pour la décomposition —
+   absent, l'élément reçoit les trois, comme avant. */
+function paintHeroArt() {
+  const sx = 1247 / 995;
+  const sy = 1283 / 1024;
+  document.querySelectorAll("[data-hero-art]").forEach((el) => {
+    if (el.querySelector(".hero-art")) return;
+    const id = "hero-clip-" + el.getAttribute("data-hero-art");
+    const layers = (el.getAttribute("data-hero-layers") ?? "vague,formes,femme").split(",");
+    const art = document.createElement("div");
+    art.className = "hero-art";
+    art.setAttribute("aria-hidden", "true");
+    const femme = "../frenchflair-website/public/hero/hero_homepage_desk_femme.webp";
+    let svgInner = "";
+    if (layers.includes("vague")) {
+      svgInner += '<rect x="260" y="1350" width="3800" height="3800" rx="563" transform="rotate(-26.7 260 1350)" fill="var(--h-wave)"/>';
+    }
+    if (layers.includes("formes")) {
+      svgInner +=
+        '<g transform="translate(1220 142) scale(' + sx + " " + sy + ')">' +
+        "<defs><clipPath id=\"" + id + "\">" +
+        '<rect x="-1" y="-1" width="997" height="1026" rx="282" ry="282"/>' +
+        "</clipPath></defs>" +
+        '<rect width="995" height="1024" rx="282" ry="282" fill="var(--h-shape)" stroke="var(--h-shape)" stroke-width="3"/>' +
+        '<g clip-path="url(#' + id + ')">' +
+        '<circle cx="709" cy="582" r="262" fill="var(--h-inner)" stroke="var(--h-inner)" stroke-width="2"/>' +
+        '<circle cx="1083" cy="386" r="313" fill="var(--h-inner)" stroke="var(--h-inner)" stroke-width="2"/>' +
+        '<circle cx="1092" cy="706" r="323" fill="var(--h-inner)" stroke="var(--h-inner)" stroke-width="2"/>' +
+        "</g></g>";
+    }
+    const femmeImg = layers.includes("femme")
+      ? '<img class="hero-femme" src="' + femme + '" alt="">'
+      : "";
+    art.innerHTML =
+      '<div class="hero-svg-wrap"><svg viewBox="0 0 2912 1632" overflow="visible">' +
+      svgInner +
+      "</svg>" +
+      femmeImg +
+      "</div>";
+    el.insertBefore(art, el.firstChild);
+  });
+}
+paintHeroArt();
+
+slides.forEach((s, k) => {
+  if (k === 1) return;
+  const b = document.createElement("button");
+  b.type = "button";
+  b.innerHTML = `<span class="n">${String(k + 1).padStart(2,"0")}</span><span class="t">${s.dataset.title}</span>`;
+  b.addEventListener("click", () => go(k));
+  toc.appendChild(b);
+});
+
+if (location.hash) {
+  const el = document.querySelector(location.hash);
+  if (el) el.scrollIntoView();
+}
+</script>
+</body>
+</html>

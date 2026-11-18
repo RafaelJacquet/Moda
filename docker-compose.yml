@@ -1,0 +1,22 @@
+services:
+  blender:
+    build: ./blender
+    container_name: ff-blender
+    restart: unless-stopped
+    # Même utilisateur que l'hôte : les fichiers produits restent lisibles par le serveur
+    user: "1000:1000"
+    # Le pont n'est accessible que depuis la machine hôte (pas depuis le réseau)
+    ports:
+      - "127.0.0.1:9876:9876"
+    volumes:
+      - ./data/blender:/output
+    environment:
+      - BRIDGE_HOST=0.0.0.0
+      - BRIDGE_PORT=9876
+      - BRIDGE_OUTPUT=/output
+      - HOME=/tmp
+    # Le code bpy généré par l'IA s'exécute UNIQUEMENT dans ce conteneur isolé
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL

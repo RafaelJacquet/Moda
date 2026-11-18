@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Connexion — French Flair Moda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="login-wrap">
+  <div class="card login-card">
+    <div class="label">French Flair</div>
+    <h1 class="display">Moda</h1>
+    <p class="sub">Générateur d'assets &amp; éditeur de maps.<br />Réservé à l'équipe — connectez-vous avec votre adresse <strong>@frenchflair.pro</strong>.</p>
+
+    <form id="email-form" autocomplete="on">
+      <div class="field">
+        <label class="label" for="email">Adresse email</label>
+        <input id="email" name="email" type="email" placeholder="prenom@frenchflair.pro" required autocomplete="email" autofocus />
+      </div>
+      <button class="btn" type="submit" id="email-btn">Se connecter</button>
+      <div class="msg" id="email-msg"></div>
+    </form>
+
+    <form id="code-form" class="hidden" autocomplete="off">
+      <div class="field">
+        <label class="label" for="code">Code reçu par email</label>
+        <input id="code" name="code" class="code-input" inputmode="numeric" pattern="\d{6}" maxlength="6" placeholder="••••••" required autocomplete="one-time-code" />
+      </div>
+      <button class="btn" type="submit" id="code-btn">Se connecter</button>
+      <button class="btn ghost" type="button" id="back-btn">Changer d'adresse</button>
+      <div class="msg" id="code-msg"></div>
+    </form>
+  </div>
+</div>
+<script src="/login.js" type="module"></script>
+</body>
+</html>
